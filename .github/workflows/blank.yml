@@ -52,6 +52,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - run: ls -R
       - name: Download module download file
         uses: actions/download-artifact@v2
         with:
@@ -65,7 +66,7 @@ jobs:
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './pack'
+          artifacts: './tga.zip'
           tag: ${{ github.event.release.tag_name }}
           body: ${{ github.event.release.body }}
     
